@@ -6,3 +6,8 @@ export const getAllGames = () => {
     return axios(`${apiUrl}/games`)
 }
 
+// READ -> Show
+export const getOneGame = (id) => {
+    return axios(`${apiUrl}/games/${id}`)
+}
+

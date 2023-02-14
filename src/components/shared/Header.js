@@ -9,6 +9,11 @@ const linkStyle = {
 const authenticatedOptions = (
 	<>
 		<Nav.Item>
+			<Link to='create-game' style={linkStyle}>
+				Add New Game
+			</Link>
+		</Nav.Item>
+		<Nav.Item>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>

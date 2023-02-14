@@ -72,7 +72,7 @@ const App = () => {
 				</Routes>
 				<Route
 					path='games/:id'
-					element={ <ShowPet user={user} msgAlert={msgAlert} /> }
+					element={ <ShowGame user={user} msgAlert={msgAlert} /> }
 				/>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert

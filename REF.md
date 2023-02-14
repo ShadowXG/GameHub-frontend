@@ -152,7 +152,7 @@ signIn(credentials)
     )
     .then(() => navigate('/'))
     .catch((error) => {
-        setEmail('')
+        setUsername('')
         setPassword('')
         msgAlert({
             heading: 'Sign In Failed with error: ' + error.message,

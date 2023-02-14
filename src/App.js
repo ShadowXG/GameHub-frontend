@@ -12,6 +12,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import ShowGame from './components/Games/ShowGame'
 
 const App = () => {
 
@@ -40,35 +41,39 @@ const App = () => {
 		})
 	}
 
-		return (
-			<Fragment>
-				<Header user={user} />
-				<Routes>
-					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
-					<Route
-						path='/sign-up'
-						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
-					/>
-					<Route
-						path='/sign-in'
-						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
-					/>
-          <Route
-            path='/sign-out'
-            element={
-              <RequireAuth user={user}>
-                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/change-password'
-            element={
-              <RequireAuth user={user}>
-                <ChangePassword msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
+	return (
+		<Fragment>
+			<Header user={user} />
+			<Routes>
+				<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
+				<Route
+					path='/sign-up'
+					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
+				/>
+				<Route
+					path='/sign-in'
+					element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
+				/>
+				<Route
+				path='/sign-out'
+				element={
+					<RequireAuth user={user}>
+					<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+					</RequireAuth>
+				}
+				/>
+				<Route
+				path='/change-password'
+				element={
+					<RequireAuth user={user}>
+					<ChangePassword msgAlert={msgAlert} user={user} />
+					</RequireAuth>}
+				/>
 				</Routes>
+				<Route
+					path='games/:id'
+					element={ <ShowPet user={user} msgAlert={msgAlert} /> }
+				/>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
 						key={msgAlert.id}
@@ -79,8 +84,8 @@ const App = () => {
 						deleteAlert={deleteAlert}
 					/>
 				))}
-			</Fragment>
-		)
+		</Fragment>
+	)
 }
 
 export default App

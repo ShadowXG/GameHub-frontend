@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Container, Card } from 'react-bootstrap'
-import { getOneGame } from '../../api/games'
+import { Container, Card, Button } from 'react-bootstrap'
+import { getOneGame, updateGame } from '../../api/games'
 import messages from '../shared/AutoDismissAlert/messages'
 import LoadingScreen from '../shared/LoadingScreen'
+import EditGameModal from './EditGameModal'
 
 const ShowGame = (props) => {
     const [game, setGame] = useState(null)
-    // const [editModalShow, setEditModalShow] = useState(false)
-    // const [updated, setUpdated] = useState(false)
+    const [editModalShow, setEditModalShow] = useState(false)
+    const [updated, setUpdated] = useState(false)
 
     const { id } = useParams()
     // const navigate = useNavigate()
@@ -27,11 +28,14 @@ const ShowGame = (props) => {
                     variant: 'danger'
                 })
             })
-    }, [])
+    }, [updated])
 
     if(!game) {
         return <LoadingScreen />
     }
+
+    console.log('this is the game', game)
+    console.log('this is the user', user)
 
     return (
         <>
@@ -45,8 +49,39 @@ const ShowGame = (props) => {
                             <div><small>Platform: {game.platform}</small></div>
                         </Card.Text>
                     </Card.Body>
+                    <Card.Footer>
+                    {
+                        game.owner && user && game.owner._id === user._id
+                        ?
+                        <>
+                            <Button 
+                                className="m-2" variant="warning"
+                                onClick={() => setEditModalShow(true)}
+                            >
+                                Edit {game.title}
+                            </Button>
+                            {/* <Button 
+                                className="m-2" variant="danger"
+                                onClick={() => setDeleteGame()}
+                            >
+                                Delete {game.title} 
+                            </Button> */}
+                        </>
+                        :
+                        null
+                        }
+                    </Card.Footer>
                 </Card>
             </Container>
+            <EditGameModal 
+                user={user}
+                show={editModalShow}
+                handleClose={() => setEditModalShow(false)}
+                updateGame={updateGame}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                game={game}
+            />
         </>
     )
 }

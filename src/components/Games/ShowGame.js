@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
-import { getOneGame, updateGame } from '../../api/games'
+import { getOneGame, removeGame, updateGame } from '../../api/games'
 import messages from '../shared/AutoDismissAlert/messages'
 import LoadingScreen from '../shared/LoadingScreen'
 import EditGameModal from './EditGameModal'
@@ -12,7 +12,7 @@ const ShowGame = (props) => {
     const [updated, setUpdated] = useState(false)
 
     const { id } = useParams()
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const { user, msgAlert } = props
     console.log('user in ShowGame props', user)
@@ -29,6 +29,25 @@ const ShowGame = (props) => {
                 })
             })
     }, [updated])
+
+    const setDeleteGame = () => {
+        removeGame(user, game._id)
+            .then(() => {
+                msgAlert({
+                    heading: 'Success',
+                    message: messages.removeGameSuccess,
+                    variant: 'success'
+                })
+            })
+            .then(() => {navigate('/')})
+            .catch(err => {
+                msgAlert({
+                    heading: 'Error',
+                    message: messages.removeGameFailure,
+                    variant: 'danger'
+                })
+            })
+    }
 
     if(!game) {
         return <LoadingScreen />
@@ -60,12 +79,12 @@ const ShowGame = (props) => {
                             >
                                 Edit {game.title}
                             </Button>
-                            {/* <Button 
+                            <Button 
                                 className="m-2" variant="danger"
                                 onClick={() => setDeleteGame()}
                             >
                                 Delete {game.title} 
-                            </Button> */}
+                            </Button>
                         </>
                         :
                         null

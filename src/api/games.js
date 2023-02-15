@@ -36,3 +36,12 @@ export const updateGame = (user, updatedGame) => {
 }
 
 // DELETE -> Delete Game
+export const removeGame = (user, gameId) => {
+    return axios({
+        url: `${apiUrl}/games/${gameId}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}

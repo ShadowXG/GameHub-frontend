@@ -42,6 +42,7 @@ const GamesIndex = (props) => {
         return <p>No games yet, go add some!</p>
     }
 
+    console.log(games)
     const gameCards = games.map(game => (
         <Card key={ game.id } style={{ width: '30%', margin: 5 }}>
             <Card.Header>{ game.title }</Card.Header>
@@ -51,7 +52,7 @@ const GamesIndex = (props) => {
                 </Card.Text>
                 {game.owner ?
                 <Card.Footer>
-                    owner { game.owner.username }
+                    { game.owner.username }
                 </Card.Footer>
                 : null}
             </Card.Body>

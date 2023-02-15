@@ -24,6 +24,15 @@ export const createGame = (user, newGame) => {
 }
 
 // UPDATE -> Update Game
-
+export const updateGame = (user, updatedGame) => {
+    return axios({
+        url: `${apiUrl}/games/${updatedGame.id}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { game: updatedGame }
+    })
+}
 
 // DELETE -> Delete Game

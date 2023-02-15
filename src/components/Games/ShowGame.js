@@ -27,7 +27,7 @@ const ShowGame = (props) => {
                     variant: 'danger'
                 })
             })
-    })
+    }, [])
 
     if(!game) {
         return <LoadingScreen />

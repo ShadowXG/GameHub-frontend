@@ -8,7 +8,6 @@ import LoadingScreen from '../shared/LoadingScreen'
 const ShowGame = (props) => {
     const [game, setGame] = useState(null)
     // const [editModalShow, setEditModalShow] = useState(false)
-    // const [toyModalShow, setToyModalShow] = useState(false)
     // const [updated, setUpdated] = useState(false)
 
     const { id } = useParams()
@@ -37,14 +36,16 @@ const ShowGame = (props) => {
     return (
         <>
             <Container className="m-2">
-                <Card.Header>{ game.title }</Card.Header>
-                <Card.Body>
-                    <Card.Text>
-                        <div><small>Description: {game.description}</small></div>
-                        <div><small>Genre: {game.genre}</small></div>
-                        <div><small>Platform: {game.platform}</small></div>
-                    </Card.Text>
-                </Card.Body>
+                <Card>
+                    <Card.Header>{ game.title }</Card.Header>
+                    <Card.Body>
+                        <Card.Text>
+                            <div><small>Description: {game.description}</small></div>
+                            <div><small>Genre: {game.genre}</small></div>
+                            <div><small>Platform: {game.platform}</small></div>
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
             </Container>
         </>
     )

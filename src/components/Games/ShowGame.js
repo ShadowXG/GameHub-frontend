@@ -5,10 +5,21 @@ import { getOneGame, removeGame, updateGame } from '../../api/games'
 import messages from '../shared/AutoDismissAlert/messages'
 import LoadingScreen from '../shared/LoadingScreen'
 import EditGameModal from './EditGameModal'
+import ShowComment from '../Comments/ShowComment'
+import NewCommentModal from '../Comments/NewCommentModal'
+
+// comment layout
+const commentCardContainerLayout = {
+    display: 'flex',
+    justifyContent: 'center',
+    flexFlow: 'row wrap'
+}
+
 
 const ShowGame = (props) => {
     const [game, setGame] = useState(null)
     const [editModalShow, setEditModalShow] = useState(false)
+    const [commentModalShow, setCommentModalShow] = useState(false)
     const [updated, setUpdated] = useState(false)
 
     const { id } = useParams()
@@ -49,6 +60,23 @@ const ShowGame = (props) => {
             })
     }
 
+    // comment card should show
+    let commentCards
+    if (game) {
+        if (game.comments.length > 0) {
+            commentCards = game.comments.map(comment => (
+                    <ShowComment
+                    key={comment.id}
+                    comment={comment}
+                    user={user}
+                    game={game}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                />
+            ))
+        }
+    }
+
     if(!game) {
         return <LoadingScreen />
     }
@@ -69,6 +97,12 @@ const ShowGame = (props) => {
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
+                        <Button
+                            className="m-2" variant="info"
+                            onClick={() => setCommentModalShow(true)}
+                            >
+                                Go make a comment for {game.title}!
+                        </Button>
                     {
                         game.owner && user && game.owner._id === user._id
                         ?
@@ -92,6 +126,9 @@ const ShowGame = (props) => {
                     </Card.Footer>
                 </Card>
             </Container>
+            <Container className="m-2" style={commentCardContainerLayout}>
+                {commentCards}
+            </Container>
             <EditGameModal 
                 user={user}
                 show={editModalShow}
@@ -100,6 +137,13 @@ const ShowGame = (props) => {
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 game={game}
+            />
+            <NewCommentModal
+                game={game}
+                show={commentModalShow}
+                handleClose={() => setCommentModalShow(false)}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
             />
         </>
     )

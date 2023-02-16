@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 import LoadingScreen from '../shared/LoadingScreen'
-
 import { getAllGames } from '../../api/games'
 import messages from '../shared/AutoDismissAlert/messages'
 

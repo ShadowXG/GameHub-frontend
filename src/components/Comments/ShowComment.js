@@ -9,7 +9,7 @@ const ShowComment = (props) => {
     const [editModalShow, setEditModalShow] = useState(false)
 
     const destroyComment = () => {
-        deleteComment(user, game.id, comment._id)
+        deleteComment(user, game._id, comment._id)
             .then(() => {
                 msgAlert({
                     heading: 'Comment is gone',
@@ -30,7 +30,7 @@ const ShowComment = (props) => {
     return (
         <>
             <Card className="m-2">
-                <Card.Header>{comment.author}</Card.Header>
+                <Card.Header></Card.Header>
                 <Card.Body>
                     <small>{comment.note}</small><br/>
                 </Card.Body>

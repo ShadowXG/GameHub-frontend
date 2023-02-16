@@ -14,6 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import ShowGame from './components/Games/ShowGame'
 import CreateGame from './components/Games/CreateGame'
+import FavoriteIndex from './components/Favorites/FavoriteIndex'
 
 const App = () => {
 
@@ -75,6 +76,13 @@ const App = () => {
 					element={
 						<RequireAuth user={user}>
 							<CreateGame msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
+				/>
+				<Route 
+					path='/favorites'
+					element={
+						<RequireAuth user={user}>
+							<FavoriteIndex msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
 				/>
 				<Route

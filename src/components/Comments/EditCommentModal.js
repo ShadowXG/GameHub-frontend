@@ -31,7 +31,7 @@ const EditCommentModal = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        updateComment(user, game.id, comment)
+        updateComment(user, game._id, comment)
             .then(() => handleClose())
             .then(() => {
                 msgAlert({

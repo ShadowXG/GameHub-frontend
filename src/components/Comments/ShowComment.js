@@ -30,7 +30,7 @@ const ShowComment = (props) => {
     return (
         <>
             <Card className="m-2">
-                <Card.Header></Card.Header>
+                <Card.Header>{comment.author}</Card.Header>
                 <Card.Body>
                     <small>{comment.note}</small><br/>
                 </Card.Body>

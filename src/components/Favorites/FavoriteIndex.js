@@ -3,7 +3,8 @@ import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 import LoadingScreen from '../shared/LoadingScreen'
 
-import { getAllFavorites } from '../../api/favorites'
+import { getAllFavorites, deleteFavorite } from '../../api/favorites'
+import { Button } from 'react-bootstrap'
 // import messages from '../shared/AutoDismissAlert/messages'
 
 const cardContainerStyle = {
@@ -32,6 +33,31 @@ const FavoriteIndex = (props) => {
         })
     }, [])
 
+    // console.log(favorites.game)
+
+    const removeFavorite = (fav) => {
+        console.log('fav', fav)
+        console.log('user', user)
+        console.log('favorites id', favorites._id)
+        deleteFavorite(user, fav._id)
+            .then(() => {
+                msgAlert({
+                    heading: 'Success',
+                    message: 'This game is not a favorite anymore',
+                    variant: 'success'
+                })
+                setFavorites(favorites.filter(favorite => favorite._id !== fav._id))
+            })
+            // .then(() => {navigate('/favorites')})
+            .catch(err => {
+                msgAlert({
+                    heading: 'Error',
+                    message: 'Could not remove this favorite',
+                    variant: 'danger'
+                })
+            })
+    }
+
     if (error) {
         return <p>Error!</p>
     }
@@ -53,14 +79,18 @@ const FavoriteIndex = (props) => {
                     {fav.owner ?
                     <Card.Footer>
                         owner { fav.owner.username }
+                        <Button 
+                            className="m-2" variant="danger"
+                            onClick={() => removeFavorite(fav)}
+                        >   
+                            Unfavorite
+                        </Button>
                     </Card.Footer>
                     : null}
                 </Card.Body>
             </Card>
         </>
     ))
-
-    console.log('These are the cards', favCards)
 
     return (
         <div className="container-md" style={ cardContainerStyle }>

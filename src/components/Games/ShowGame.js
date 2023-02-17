@@ -96,7 +96,7 @@ const ShowGame = (props) => {
         }
     }
 
-    
+    // importing our loading screen
     if(!game) {
         return <LoadingScreen />
     }
@@ -108,16 +108,11 @@ const ShowGame = (props) => {
         return (
             <>
                 <Container className="m-2">
-                    <Card>
-                        <Card.Header>{ game.title }</Card.Header>
-                        <Card.Body>
-                            <Card.Text>
+                        <div>{ game.title }</div>
                                 <div><small>Description: {game.description}</small></div>
                                 <div><small>Genre: {game.genre}</small></div>
-                                <div><small>Platform: {game.platform}</small></div>
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
+                                <div><small>Platform: {game.platform}</small></div>  
+                        <div>
                             <Button
                                 className="m-2" variant="info"
                                 onClick={() => setCommentModalShow(true)}
@@ -134,14 +129,14 @@ const ShowGame = (props) => {
                                 game.owner && user && game.owner._id === user._id
                                 ?
                                 <>
-                                    <Button 
+                                    {/* <Button 
                                         className="m-2" variant="warning"
                                         onClick={() => setEditModalShow(true)}
                                     >
                                         Edit {game.title}
-                                    </Button>
+                                    </Button> */}
                                     <Button 
-                                        className="m-2" variant="danger"
+                                        className="m-5" variant="danger"
                                         onClick={() => setDeleteGame()}
                                     >   
                                         Delete {game.title} 
@@ -150,8 +145,7 @@ const ShowGame = (props) => {
                                 :
                                 null
                             }
-                        </Card.Footer>
-                    </Card>
+                        </div>
                 </Container>
                 <Container className="m-2" style={commentCardContainerLayout}>
                     {commentCards}
@@ -178,24 +172,16 @@ const ShowGame = (props) => {
         return (
             <>
                 <Container className="m-2">
-                    <Card>
-                        <Card.Header>{ game.title }</Card.Header>
-                        <Card.Body>
-                            <Card.Text>
-                                <div><small>Description: {game.description}</small></div>
-                                <div><small>Genre: {game.genre}</small></div>
-                                <div><small>Platform: {game.platform}</small></div>
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
+                        <div>{ game.title }</div>
+                            <div><small>Description: {game.description}</small></div>
+                            <div><small>Genre: {game.genre}</small></div>
+                            <div><small>Platform: {game.platform}</small></div>
                             <Button
                                 className="m-2" variant="info"
                                 onClick={() => setCommentModalShow(true)}
                                 >
                                     Go make a comment for {game.title}!
                             </Button>
-                        </Card.Footer>
-                    </Card>
                 </Container>
                 <Container className="m-2" style={commentCardContainerLayout}>
                     {commentCards}

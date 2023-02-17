@@ -38,21 +38,21 @@ const CreateGame = (props) => {
         e.preventDefault()
 
         createGame(user, game)
-        .then(res => { navigate(`games/${res.data.game.id}`)})
-        .then(() => {
-            msgAlert({
-                heading: 'Oh Yeahhh!',
-                message: createGameSuccess,
-                variant: 'success'
+            .then(res => { navigate(`/games/${res.data.game._id}`)})
+            .then(() => {
+                msgAlert({
+                    heading: 'Oh Yeahhh!',
+                    message: createGameSuccess,
+                    variant: 'success'
+                })
             })
-        })
-        .catch(() => {
-            msgAlert({
-                heading: 'Oh Nooo!',
-                message: createGameFailure,
-                variant: 'danger'
+            .catch(() => {
+                msgAlert({
+                    heading: 'Oh Nooo!',
+                    message: createGameFailure,
+                    variant: 'danger'
+                })
             })
-        })
     }
 
     return (

@@ -18,7 +18,7 @@ const FavoriteIndex = (props) => {
     // console.log('these are the favorites', favorites)
 
     const { user, msgAlert } = props
-    console.log(user)
+    // console.log(user)
     useEffect(() => {
         getAllFavorites(user)
             .then(res => setFavorites(res.data.favorites))
@@ -43,13 +43,15 @@ const FavoriteIndex = (props) => {
         return <p>No favorites yet, go add some!</p>
     }
 
+    console.log('These are the favorites', favorites)
+
     const favCards = favorites.map(fav => (
         <>
-            <Card key={ fav.id } style={{ width: '30%', margin: 5 }}>
-                <Card.Header>{ fav.title }</Card.Header>
+            <Card key={ fav.game.id } style={{ width: '30%', margin: 5 }}>
+                <Card.Header>{ fav.game.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        <Link to={`/games/${fav._id}`} className="btn btn-warning">View { fav.title }</Link>
+                        <Link to={`/games/${fav.game._id}`} className="btn btn-warning">View { fav.game.title }</Link>
                     </Card.Text>
                     {fav.owner ?
                     <Card.Footer>

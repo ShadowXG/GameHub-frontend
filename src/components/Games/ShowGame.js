@@ -7,6 +7,7 @@ import LoadingScreen from '../shared/LoadingScreen'
 import EditGameModal from './EditGameModal'
 import ShowComment from '../Comments/ShowComment'
 import NewCommentModal from '../Comments/NewCommentModal'
+import { addFavorite } from '../../api/favorites'
 
 // comment layout
 const commentCardContainerLayout = {
@@ -40,6 +41,24 @@ const ShowGame = (props) => {
                 })
             })
     }, [updated])
+
+    const addNewFavorite = () => {
+        addFavorite(user, game._id)
+            .then(() => {
+                msgAlert({
+                    heading: 'Favorited!',
+                    message: 'You added a favorite!',
+                    variant: 'success'
+                })
+            })
+            .catch(() => {
+                msgAlert({
+                    heading: 'Oh No!',
+                    message: 'Was unable to add this as a favorite',
+                    variant: 'danger'
+                })
+            })
+    }
 
     const setDeleteGame = () => {
         removeGame(user, game._id)
@@ -77,76 +96,120 @@ const ShowGame = (props) => {
         }
     }
 
+    
     if(!game) {
         return <LoadingScreen />
     }
-
+    
     console.log('this is the game', game)
     console.log('this is the user', user)
-
-    return (
-        <>
-            <Container className="m-2">
-                <Card>
-                    <Card.Header>{ game.title }</Card.Header>
-                    <Card.Body>
-                        <Card.Text>
-                            <div><small>Description: {game.description}</small></div>
-                            <div><small>Genre: {game.genre}</small></div>
-                            <div><small>Platform: {game.platform}</small></div>
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <Button
-                            className="m-2" variant="info"
-                            onClick={() => setCommentModalShow(true)}
-                            >
-                                Go make a comment for {game.title}!
-                        </Button>
-                    {
-                        game.owner && user && game.owner._id === user._id
-                        ?
-                        <>
-                            <Button 
+    
+    if (user) {
+        return (
+            <>
+                <Container className="m-2">
+                    <Card>
+                        <Card.Header>{ game.title }</Card.Header>
+                        <Card.Body>
+                            <Card.Text>
+                                <div><small>Description: {game.description}</small></div>
+                                <div><small>Genre: {game.genre}</small></div>
+                                <div><small>Platform: {game.platform}</small></div>
+                            </Card.Text>
+                        </Card.Body>
+                        <Card.Footer>
+                            <Button
+                                className="m-2" variant="info"
+                                onClick={() => setCommentModalShow(true)}
+                                >
+                                    Go make a comment for {game.title}!
+                            </Button>
+                            <Button
                                 className="m-2" variant="warning"
-                                onClick={() => setEditModalShow(true)}
+                                onClick={() => addNewFavorite()}
                             >
-                                Edit {game.title}
+                                Add as favorite!
+                            </Button> 
+                            {
+                                game.owner && user && game.owner._id === user._id
+                                ?
+                                <>
+                                    <Button 
+                                        className="m-2" variant="warning"
+                                        onClick={() => setEditModalShow(true)}
+                                    >
+                                        Edit {game.title}
+                                    </Button>
+                                    <Button 
+                                        className="m-2" variant="danger"
+                                        onClick={() => setDeleteGame()}
+                                    >   
+                                        Delete {game.title} 
+                                    </Button>
+                                </>
+                                :
+                                null
+                            }
+                        </Card.Footer>
+                    </Card>
+                </Container>
+                <Container className="m-2" style={commentCardContainerLayout}>
+                    {commentCards}
+                </Container>
+                <EditGameModal 
+                    user={user}
+                    show={editModalShow}
+                    handleClose={() => setEditModalShow(false)}
+                    updateGame={updateGame}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                    game={game}
+                />
+                <NewCommentModal
+                    game={game}
+                    show={commentModalShow}
+                    handleClose={() => setCommentModalShow(false)}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                />
+            </>
+        )
+    }else {
+        return (
+            <>
+                <Container className="m-2">
+                    <Card>
+                        <Card.Header>{ game.title }</Card.Header>
+                        <Card.Body>
+                            <Card.Text>
+                                <div><small>Description: {game.description}</small></div>
+                                <div><small>Genre: {game.genre}</small></div>
+                                <div><small>Platform: {game.platform}</small></div>
+                            </Card.Text>
+                        </Card.Body>
+                        <Card.Footer>
+                            <Button
+                                className="m-2" variant="info"
+                                onClick={() => setCommentModalShow(true)}
+                                >
+                                    Go make a comment for {game.title}!
                             </Button>
-                            <Button 
-                                className="m-2" variant="danger"
-                                onClick={() => setDeleteGame()}
-                            >
-                                Delete {game.title} 
-                            </Button>
-                        </>
-                        :
-                        null
-                        }
-                    </Card.Footer>
-                </Card>
-            </Container>
-            <Container className="m-2" style={commentCardContainerLayout}>
-                {commentCards}
-            </Container>
-            <EditGameModal 
-                user={user}
-                show={editModalShow}
-                handleClose={() => setEditModalShow(false)}
-                updateGame={updateGame}
-                msgAlert={msgAlert}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-                game={game}
-            />
-            <NewCommentModal
-                game={game}
-                show={commentModalShow}
-                handleClose={() => setCommentModalShow(false)}
-                msgAlert={msgAlert}
-                triggerRefresh={() => setUpdated(prev => !prev)}
-            />
-        </>
-    )
+                        </Card.Footer>
+                    </Card>
+                </Container>
+                <Container className="m-2" style={commentCardContainerLayout}>
+                    {commentCards}
+                </Container>
+                <NewCommentModal
+                    game={game}
+                    show={commentModalShow}
+                    handleClose={() => setCommentModalShow(false)}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                />
+            </>
+        )
+    }
 }
 
 export default ShowGame

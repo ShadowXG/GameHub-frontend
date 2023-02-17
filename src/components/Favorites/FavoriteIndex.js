@@ -23,7 +23,6 @@ const FavoriteIndex = (props) => {
         getAllFavorites(user)
             .then(res => setFavorites(res.data.favorites))
             .catch(err => {
-                console.log('This is the error', err)
                 msgAlert({
                 heading: 'Error geting favorites',
                 message: 'failed to get your favorites',
@@ -42,8 +41,6 @@ const FavoriteIndex = (props) => {
     } else if (favorites.length === 0) {
         return <p>No favorites yet, go add some!</p>
     }
-
-    console.log('These are the favorites', favorites)
 
     const favCards = favorites.map(fav => (
         <>

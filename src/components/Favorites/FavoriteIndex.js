@@ -68,30 +68,53 @@ const FavoriteIndex = (props) => {
         return <p>No favorites yet, go add some!</p>
     }
 
+    console.log(favorites.game)
     const favCards = favorites.map(fav => (
         <>
-            <Card key={ fav.game.id } style={{ width: '30%', margin: 5 }}>
-                <Card.Header>{ fav.game.title }</Card.Header>
-                <Card.Body>
-                    <Card.Text>
-                        <Link to={`/games/${fav.game._id}`} className="btn btn-warning">View { fav.game.title }</Link>
-                    </Card.Text>
-                    {fav.owner ?
-                    <Card.Footer>
-                        owner { fav.owner.username }
-                        <Button 
-                            className="m-2" variant="danger"
-                            onClick={() => removeFavorite(fav)}
-                        >   
-                            Unfavorite
-                        </Button>
-                    </Card.Footer>
-                    : null}
-                </Card.Body>
-            </Card>
+            { fav.game ?
+                <Card key={ fav.game.id } style={{ width: '30%', margin: 5 }}>
+                    <Card.Header>{ fav.game.title }</Card.Header>
+                    <Card.Body>
+                        <Card.Text>
+                            <Link to={`/games/${fav.game._id}`} className="btn btn-warning">View { fav.game.title }</Link>
+                        </Card.Text>
+                        {fav.owner ?
+                        <Card.Footer>
+                            owner { fav.owner.username }
+                            <Button 
+                                className="m-2" variant="danger"
+                                onClick={() => removeFavorite(fav)}
+                                >   
+                                Unfavorite
+                            </Button>
+                        </Card.Footer>
+                        : null}
+                    </Card.Body>
+                </Card>
+            :
+                <Card key={ fav.game } style={{ width: '30%', margin: 5 }}>
+                    <Card.Header>Removed</Card.Header>
+                    <Card.Body>
+                        <Card.Text>
+                            This game was removed
+                        </Card.Text>
+                        {fav.owner ?
+                        <Card.Footer>
+                            owner { fav.owner.username }
+                            <Button 
+                                className="m-2" variant="danger"
+                                onClick={() => removeFavorite(fav)}
+                                >   
+                                Unfavorite
+                            </Button>
+                        </Card.Footer>
+                        : null}
+                    </Card.Body>
+                </Card>
+            }
         </>
     ))
-
+        
     return (
         <div className="container-md" style={ cardContainerStyle }>
             {favCards}

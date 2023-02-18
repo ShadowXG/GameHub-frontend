@@ -112,21 +112,27 @@ const ShowGame = (props) => {
                         fontSize: '50px', 
                         fontStyle: 'bold', 
                         borderBottom: '5px solid black',
-                        marginBottom: '10px'
+                        marginBottom: '20px'
                         }}
                     >
                         { game.title }
                     </div>
-                    <img src={game.picture} alt="Game Cover" style={{ maxWidth: '100%', maxHeight: '400px'}} />
-                    <div><small>Description: {game.description}</small></div>
-                    <div><small>Genre: {game.genre}</small></div>
-                    <div><small>Platform: {game.platform}</small></div>  
-                    <div>
+                    <img src={game.picture} alt="Game Cover" style={{ 
+                        maxWidth: '100%', maxHeight: '400px', 
+                        border: '5px solid black',
+                        borderRadius: '10px',
+                        marginBottom: '15px'
+                        }} 
+                    />
+                    <p style={{ fontStyle: 'bold'}}>Description:<small> {game.description}</small></p>
+                    <div style={{ marginBottom: '15px'}}>Genre:<small> {game.genre.join(' ')}</small></div>
+                    <div style={{ marginBottom: '15px'}}>Platform:<small> {game.platform.join(' ')}</small></div>  
+                    <div style={{ textAlign: 'center' }}>
                         <Button
                             className="m-2" variant="info"
                             onClick={() => setCommentModalShow(true)}
                             >
-                                Go make a comment for {game.title}!
+                                Comment on {game.title}!
                         </Button>
                         <Button
                             className="m-2" variant="warning"
@@ -145,7 +151,7 @@ const ShowGame = (props) => {
                                     Edit {game.title}
                                 </Button> */}
                                 <Button 
-                                    className="m-5" variant="danger"
+                                    className="m-2" variant="danger"
                                     onClick={() => setDeleteGame()}
                                 >   
                                     Delete {game.title} 
@@ -190,16 +196,24 @@ const ShowGame = (props) => {
                     >
                         { game.title }
                     </div>
-                    <img src={game.picture} alt="Game Cover" style={{ maxWidth: '100%', maxHeight: '400px'}} />
-                    <div><small>Description: {game.description}</small></div>
-                    <div><small>Genre: {game.genre}</small></div>
-                    <div><small>Platform: {game.platform}</small></div>
-                    <Button
-                        className="m-2" variant="info"
-                        onClick={() => setCommentModalShow(true)}
-                        >
-                            Go make a comment for {game.title}!
-                    </Button>
+                    <img src={game.picture} alt="Game Cover" style={{ 
+                        maxWidth: '100%', maxHeight: '400px', 
+                        border: '5px solid black',
+                        borderRadius: '10px',
+                        marginBottom: '15px'
+                        }} 
+                    />
+                    <p style={{ fontStyle: 'bold'}}>Description:<small> {game.description}</small></p>
+                    <div style={{ marginBottom: '15px'}}>Genre:<small> {game.genre.join(' ')}</small></div>
+                    <div style={{ marginBottom: '15px'}}>Platform:<small> {game.platform.join(' ')}</small></div>
+                    <div style={{ textAlign: 'center' }}>
+                        <Button
+                            className="m-2" variant="info"
+                            onClick={() => setCommentModalShow(true)}
+                            >
+                                Comment on {game.title}!
+                        </Button>
+                    </div>
                 </Container>
                 <Container className="m-2" style={commentCardContainerLayout}>
                     {commentCards}

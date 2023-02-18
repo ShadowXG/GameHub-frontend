@@ -62,7 +62,7 @@ const GamesIndex = (props) => {
     
     const gameCards = games.map(game => (
         <>
-            <Card key={ game.id } style={{ width: '30%', margin: 5 }}>
+            <Card key={ game.id } style={{ width: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white'}}>
                 <Card.Header>{ game.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
@@ -70,7 +70,7 @@ const GamesIndex = (props) => {
                     </Card.Text>
                     {game.owner ?
                     <Card.Footer>
-                        owner { game.owner.username }
+                        OP: { game.owner.username }
                     </Card.Footer>
                     : null}
                 </Card.Body>
@@ -80,7 +80,7 @@ const GamesIndex = (props) => {
 
     const userGameCards = games.map(game => (
         <>
-            <Card key={ game.id } style={{ width: '30%', margin: 5 }}>
+            <Card key={ game.id } style={{ width: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white'}}>
                 <Card.Header>{ game.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
@@ -92,9 +92,9 @@ const GamesIndex = (props) => {
                                 className="m-2" variant="warning"
                                 onClick={() => addNewFavorite(game)}
                             >
-                                Add as favorite!
+                                Add to favorite!
                         </Button> 
-                        owner { game.owner.username }
+                        OP: { game.owner.username }
                     </Card.Footer>
                     : null}
                 </Card.Body>

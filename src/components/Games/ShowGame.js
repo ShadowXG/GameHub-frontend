@@ -119,7 +119,7 @@ const ShowGame = (props) => {
                     </div>
                     <img src={game.picture} alt="Game Cover" style={{ 
                         maxWidth: '100%', maxHeight: '400px', 
-                        border: '5px solid white',
+                        border: '5px solid #B0C4DE',
                         borderRadius: '10px',
                         marginBottom: '15px'
                         }} 
@@ -198,7 +198,6 @@ const ShowGame = (props) => {
                     </div>
                     <img src={game.picture} alt="Game Cover" style={{ 
                         maxWidth: '100%', maxHeight: '400px', 
-                        border: '5px solid black',
                         borderRadius: '10px',
                         marginBottom: '15px'
                         }} 

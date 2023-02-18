@@ -106,12 +106,12 @@ const ShowGame = (props) => {
     
     if (user) {
         return (
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                <Container className="m-2" style={{ maxWidth: '50%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
+                <Container className="m-2" style={{ maxWidth: '50%', color: 'white' }}>
                     <div style={{ 
                         fontSize: '50px', 
                         fontStyle: 'bold', 
-                        borderBottom: '5px solid black',
+                        borderBottom: '5px solid white',
                         marginBottom: '20px'
                         }}
                     >
@@ -119,23 +119,23 @@ const ShowGame = (props) => {
                     </div>
                     <img src={game.picture} alt="Game Cover" style={{ 
                         maxWidth: '100%', maxHeight: '400px', 
-                        border: '5px solid black',
+                        border: '5px solid white',
                         borderRadius: '10px',
                         marginBottom: '15px'
                         }} 
                     />
-                    <p style={{ fontStyle: 'bold'}}>Description:<small> {game.description}</small></p>
+                    <p style={{fontStyle: 'bold'}}>Description:<small> {game.description}</small></p>
                     <div style={{ marginBottom: '15px'}}>Genre:<small> {game.genre.join(' ')}</small></div>
                     <div style={{ marginBottom: '15px'}}>Platform:<small> {game.platform.join(' ')}</small></div>  
                     <div style={{ textAlign: 'center' }}>
                         <Button
-                            className="m-2" variant="info"
+                            className="m-2" variant="outline-light"
                             onClick={() => setCommentModalShow(true)}
                             >
                                 Comment on {game.title}!
                         </Button>
                         <Button
-                            className="m-2" variant="warning"
+                            className="m-2" variant="outline-warning"
                             onClick={() => addNewFavorite()}
                         >
                             Add as favorite!
@@ -151,7 +151,7 @@ const ShowGame = (props) => {
                                     Edit {game.title}
                                 </Button> */}
                                 <Button 
-                                    className="m-2" variant="danger"
+                                    className="m-2" variant="outline-danger"
                                     onClick={() => setDeleteGame()}
                                 >   
                                     Delete {game.title} 
@@ -185,12 +185,12 @@ const ShowGame = (props) => {
         )
     }else {
         return (
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
                 <Container className="m-2" style={{ maxWidth: '50%' }}>
                     <div style={{ 
                         fontSize: '50px', 
                         fontStyle: 'bold', 
-                        borderBottom: '5px solid black',
+                        borderBottom: '5px solid white',
                         marginBottom: '10px'
                         }}
                     >
@@ -208,7 +208,7 @@ const ShowGame = (props) => {
                     <div style={{ marginBottom: '15px'}}>Platform:<small> {game.platform.join(' ')}</small></div>
                     <div style={{ textAlign: 'center' }}>
                         <Button
-                            className="m-2" variant="info"
+                            className="m-2" variant="outline-light"
                             onClick={() => setCommentModalShow(true)}
                             >
                                 Comment on {game.title}!

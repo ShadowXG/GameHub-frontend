@@ -7,7 +7,9 @@ const Home = (props) => {
 
 	return (
 		<>
-			<Container className="m-2" style={{textAlign: 'center'}}>
+			<Container className="m-2" style={{
+				textAlign: 'center'
+				}}>
 				<h2 style={{color: 'white'}}>Games</h2>
 				<GamesIndex msgAlert={ props.msgAlert } user={props.user}/>
 			</Container>

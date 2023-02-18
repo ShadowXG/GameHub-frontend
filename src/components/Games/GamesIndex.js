@@ -63,9 +63,19 @@ const GamesIndex = (props) => {
     const gameCards = games.map(game => (
         <>
             <Card key={ game.id } style={{ width: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white'}}>
-                <Card.Header>{ game.title }</Card.Header>
+                <Card.Header style={{ fontSize: '30px'}}>{ game.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
+                        <img src={game.picture} alt="Game Cover" style={{ 
+                            maxWidth: '295px', 
+                            minWidth: '295px', 
+                            minHeight: '170px', 
+                            maxHeight: '170px', 
+                            border: '5px solid black',
+                            borderRadius: '10px',
+                            marginBottom: '15px'
+                            }} 
+                        />
                         <Link to={`/games/${game._id}`} className="btn btn-warning">View { game.title }</Link>
                     </Card.Text>
                     {game.owner ?
@@ -81,19 +91,26 @@ const GamesIndex = (props) => {
     const userGameCards = games.map(game => (
         <>
             <Card key={ game.id } style={{ width: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white'}}>
-                <Card.Header>{ game.title }</Card.Header>
+                <Card.Header style={{ fontSize: '30px'}}>{ game.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
+                        <img src={game.picture} alt="Game Cover" style={{ 
+                            maxWidth: '100%', maxHeight: '20rem', 
+                            border: '5px solid black',
+                            borderRadius: '10px',
+                            marginBottom: '15px'
+                            }}
+                        />
                         <Link to={`/games/${game._id}`} className="btn btn-warning">View { game.title }</Link>
-                    </Card.Text>
-                    {game.owner ?
-                    <Card.Footer>
                         <Button
                                 className="m-2" variant="warning"
                                 onClick={() => addNewFavorite(game)}
                             >
                                 Add to favorite!
                         </Button> 
+                    </Card.Text>
+                    {game.owner ?
+                    <Card.Footer>
                         OP: { game.owner.username }
                     </Card.Footer>
                     : null}

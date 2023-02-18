@@ -72,15 +72,25 @@ const FavoriteIndex = (props) => {
     const favCards = favorites.map(fav => (
         <>
             { fav.game ?
-                <Card key={ fav.game.id } style={{ width: '30%', margin: 5 }}>
+                <Card key={ fav.game.id } style={{ width: '30%', margin: 5, textAlign: 'center', backgroundColor: '#191921', color: 'white' }}>
                     <Card.Header>{ fav.game.title }</Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <Link to={`/games/${fav.game._id}`} className="btn btn-warning">View { fav.game.title }</Link>
+                            <Link to={`/games/${fav.game._id}`}>
+                            <img src={fav.game.picture} alt="Game Cover" style={{ 
+                                maxWidth: '295px', 
+                                minWidth: '295px', 
+                                minHeight: '170px', 
+                                maxHeight: '170px', 
+                                border: '5px solid white',
+                                borderRadius: '10px',
+                                marginBottom: '15px',
+                                }} 
+                            />
+                        </Link>
                         </Card.Text>
                         {fav.owner ?
                         <Card.Footer>
-                            owner { fav.owner.username }
                             <Button 
                                 className="m-2" variant="danger"
                                 onClick={() => removeFavorite(fav)}
@@ -92,7 +102,7 @@ const FavoriteIndex = (props) => {
                     </Card.Body>
                 </Card>
             :
-                <Card key={ fav.game } style={{ width: '30%', margin: 5 }}>
+                <Card key={ fav.game } style={{ width: '30%', margin: 5, textAlign: 'center', backgroundColor: '#191921', color: 'white' }}>
                     <Card.Header>Removed</Card.Header>
                     <Card.Body>
                         <Card.Text>

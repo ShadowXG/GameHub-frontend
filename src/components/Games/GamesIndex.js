@@ -62,24 +62,25 @@ const GamesIndex = (props) => {
     
     const gameCards = games.map(game => (
         <>
-            <Card key={ game.id } style={{ width: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white'}}>
+            <Card key={ game.id } style={{ minWidth: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white'}}>
                 <Card.Header style={{ fontSize: '30px'}}>{ game.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        <img src={game.picture} alt="Game Cover" style={{ 
-                            maxWidth: '295px', 
-                            minWidth: '295px', 
-                            minHeight: '170px', 
-                            maxHeight: '170px', 
-                            border: '5px solid black',
-                            borderRadius: '10px',
-                            marginBottom: '15px'
-                            }} 
-                        />
-                        <Link to={`/games/${game._id}`} className="btn btn-warning">View { game.title }</Link>
+                    <Link to={`/games/${game._id}`}>
+                            <img src={game.picture} alt="Game Cover" style={{ 
+                                maxWidth: '295px', 
+                                minWidth: '295px', 
+                                minHeight: '170px', 
+                                maxHeight: '170px', 
+                                border: '5px solid white',
+                                borderRadius: '10px',
+                                marginBottom: '15px',
+                                }} 
+                            />
+                        </Link>
                     </Card.Text>
                     {game.owner ?
-                    <Card.Footer>
+                    <Card.Footer style={{ fontSize: '20px'}}>
                         OP: { game.owner.username }
                     </Card.Footer>
                     : null}
@@ -90,27 +91,31 @@ const GamesIndex = (props) => {
 
     const userGameCards = games.map(game => (
         <>
-            <Card key={ game.id } style={{ width: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white'}}>
-                <Card.Header style={{ fontSize: '30px'}}>{ game.title }</Card.Header>
+            <Card key={ game.id } style={{ minWidth: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white' }}>
+                <Card.Header style={{ fontSize: '30px' }}>{ game.title }</Card.Header>
                 <Card.Body>
-                    <Card.Text>
-                        <img src={game.picture} alt="Game Cover" style={{ 
-                            maxWidth: '100%', maxHeight: '20rem', 
-                            border: '5px solid black',
-                            borderRadius: '10px',
-                            marginBottom: '15px'
-                            }}
-                        />
-                        <Link to={`/games/${game._id}`} className="btn btn-warning">View { game.title }</Link>
+                    <Card.Text style={{ display: 'flex', flexFlow: 'column' }}>
+                        <Link to={`/games/${game._id}`}>
+                            <img src={game.picture} alt="Game Cover" style={{ 
+                                maxWidth: '295px', 
+                                minWidth: '295px', 
+                                minHeight: '170px', 
+                                maxHeight: '170px', 
+                                border: '5px solid white',
+                                borderRadius: '10px',
+                                marginBottom: '15px',
+                                }} 
+                            />
+                        </Link>
                         <Button
                                 className="m-2" variant="warning"
                                 onClick={() => addNewFavorite(game)}
                             >
-                                Add to favorite!
+                                Add to favorites!
                         </Button> 
                     </Card.Text>
                     {game.owner ?
-                    <Card.Footer>
+                    <Card.Footer style={{ fontSize: '20px'}}>
                         OP: { game.owner.username }
                     </Card.Footer>
                     : null}

@@ -6,14 +6,12 @@ const Home = (props) => {
 	console.log('props in home', props)
 
 	return (
-		<>
-			<Container className="m-2" style={{
-				textAlign: 'center'
-				}}>
+		<div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+			<Container className="m-2" style={{ textAlign: 'center' }}>
 				<h2 style={{color: 'white'}}>Games</h2>
 				<GamesIndex msgAlert={ props.msgAlert } user={props.user}/>
 			</Container>
-		</>
+		</div>
 	)
 }
 

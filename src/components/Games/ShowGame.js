@@ -106,46 +106,55 @@ const ShowGame = (props) => {
     
     if (user) {
         return (
-            <>
-                <Container className="m-2">
-                        <div>{ game.title }</div>
-                                <div><small>Description: {game.description}</small></div>
-                                <div><small>Genre: {game.genre}</small></div>
-                                <div><small>Platform: {game.platform}</small></div>  
-                        <div>
-                            <Button
-                                className="m-2" variant="info"
-                                onClick={() => setCommentModalShow(true)}
-                                >
-                                    Go make a comment for {game.title}!
-                            </Button>
-                            <Button
-                                className="m-2" variant="warning"
-                                onClick={() => addNewFavorite()}
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <Container className="m-2" style={{ maxWidth: '50%' }}>
+                    <div style={{ 
+                        fontSize: '50px', 
+                        fontStyle: 'bold', 
+                        borderBottom: '5px solid black',
+                        marginBottom: '10px'
+                        }}
+                    >
+                        { game.title }
+                    </div>
+                    <img src={game.picture} alt="Game Cover" style={{ maxWidth: '100%', maxHeight: '400px'}} />
+                    <div><small>Description: {game.description}</small></div>
+                    <div><small>Genre: {game.genre}</small></div>
+                    <div><small>Platform: {game.platform}</small></div>  
+                    <div>
+                        <Button
+                            className="m-2" variant="info"
+                            onClick={() => setCommentModalShow(true)}
                             >
-                                Add as favorite!
-                            </Button> 
-                            {
-                                game.owner && user && game.owner._id === user._id
-                                ?
-                                <>
-                                    {/* <Button 
-                                        className="m-2" variant="warning"
-                                        onClick={() => setEditModalShow(true)}
-                                    >
-                                        Edit {game.title}
-                                    </Button> */}
-                                    <Button 
-                                        className="m-5" variant="danger"
-                                        onClick={() => setDeleteGame()}
-                                    >   
-                                        Delete {game.title} 
-                                    </Button>
-                                </>
-                                :
-                                null
-                            }
-                        </div>
+                                Go make a comment for {game.title}!
+                        </Button>
+                        <Button
+                            className="m-2" variant="warning"
+                            onClick={() => addNewFavorite()}
+                        >
+                            Add as favorite!
+                        </Button> 
+                        {
+                            game.owner && user && game.owner._id === user._id
+                            ?
+                            <>
+                                {/* <Button 
+                                    className="m-2" variant="warning"
+                                    onClick={() => setEditModalShow(true)}
+                                >
+                                    Edit {game.title}
+                                </Button> */}
+                                <Button 
+                                    className="m-5" variant="danger"
+                                    onClick={() => setDeleteGame()}
+                                >   
+                                    Delete {game.title} 
+                                </Button>
+                            </>
+                            :
+                            null
+                        }
+                    </div>
                 </Container>
                 <Container className="m-2" style={commentCardContainerLayout}>
                     {commentCards}
@@ -166,22 +175,31 @@ const ShowGame = (props) => {
                     msgAlert={msgAlert}
                     triggerRefresh={() => setUpdated(prev => !prev)}
                 />
-            </>
+            </div>
         )
     }else {
         return (
-            <>
-                <Container className="m-2">
-                        <div>{ game.title }</div>
-                            <div><small>Description: {game.description}</small></div>
-                            <div><small>Genre: {game.genre}</small></div>
-                            <div><small>Platform: {game.platform}</small></div>
-                            <Button
-                                className="m-2" variant="info"
-                                onClick={() => setCommentModalShow(true)}
-                                >
-                                    Go make a comment for {game.title}!
-                            </Button>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <Container className="m-2" style={{ maxWidth: '50%' }}>
+                    <div style={{ 
+                        fontSize: '50px', 
+                        fontStyle: 'bold', 
+                        borderBottom: '5px solid black',
+                        marginBottom: '10px'
+                        }}
+                    >
+                        { game.title }
+                    </div>
+                    <img src={game.picture} alt="Game Cover" style={{ maxWidth: '100%', maxHeight: '400px'}} />
+                    <div><small>Description: {game.description}</small></div>
+                    <div><small>Genre: {game.genre}</small></div>
+                    <div><small>Platform: {game.platform}</small></div>
+                    <Button
+                        className="m-2" variant="info"
+                        onClick={() => setCommentModalShow(true)}
+                        >
+                            Go make a comment for {game.title}!
+                    </Button>
                 </Container>
                 <Container className="m-2" style={commentCardContainerLayout}>
                     {commentCards}
@@ -193,7 +211,7 @@ const ShowGame = (props) => {
                     msgAlert={msgAlert}
                     triggerRefresh={() => setUpdated(prev => !prev)}
                 />
-            </>
+            </div>
         )
     }
 }

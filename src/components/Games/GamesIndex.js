@@ -72,7 +72,7 @@ const GamesIndex = (props) => {
                                 minWidth: '295px', 
                                 minHeight: '170px', 
                                 maxHeight: '170px', 
-                                border: '5px solid #B0C4DE',
+                                border: '2px solid #B0C4DE',
                                 borderRadius: '10px',
                                 marginBottom: '15px',
                                 }} 
@@ -101,7 +101,7 @@ const GamesIndex = (props) => {
                                 minWidth: '295px', 
                                 minHeight: '170px', 
                                 maxHeight: '170px', 
-                                border: '5px solid #B0C4DE',
+                                border: '2px solid #B0C4DE',
                                 borderRadius: '10px',
                                 marginBottom: '15px',
                                 }} 

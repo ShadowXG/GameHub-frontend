@@ -15,7 +15,7 @@ const SignOut = (props) => {
 		signOut(user)
 			.finally(() =>
 				msgAlert({
-					heading: 'Signed Out Successfully',
+					heading: 'See You Soon, Gamer!',
 					message: messages.signOutSuccess,
 					variant: 'success',
 				})

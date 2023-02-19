@@ -6,6 +6,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { FloatingLabel } from 'react-bootstrap'
 
 const SignIn = (props) => {
 	// constructor(props) {
@@ -60,7 +61,11 @@ const SignIn = (props) => {
                 <h3>Sign In</h3>
                 <Form onSubmit={onSignIn}>
                     <Form.Group controlId='username'>
-                        <Form.Label>Username</Form.Label>
+                        <FloatingLabel
+                        controlId='floatingInput'
+                        label='Username'
+                        className='mb-3'
+                        >
                         <Form.Control
                             required
                             type='username'
@@ -69,9 +74,14 @@ const SignIn = (props) => {
                             placeholder='Enter username'
                             onChange={e => setUsername(e.target.value)}
                         />
+                        </FloatingLabel>
                     </Form.Group>
                     <Form.Group controlId='password'>
-                        <Form.Label>Password</Form.Label>
+                        <FloatingLabel
+                        controlId='floatingInput'
+                        label='Password'
+                        className='mb-3'
+                        >
                         <Form.Control
                             required
                             name='password'
@@ -80,6 +90,7 @@ const SignIn = (props) => {
                             placeholder='Password'
                             onChange={e => setPassword(e.target.value)}
                         />
+                        </FloatingLabel>
                     </Form.Group>
                     <Button variant='primary' type='submit'>
                         Submit

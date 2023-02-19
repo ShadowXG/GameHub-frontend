@@ -7,6 +7,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { FloatingLabel } from 'react-bootstrap'
 
 const SignUp = (props) => {
 	// constructor(props) {
@@ -61,7 +62,11 @@ const SignUp = (props) => {
                 <h3>Sign Up</h3>
                 <Form onSubmit={onSignUp}>
                     <Form.Group controlId='username'>
-                        <Form.Label>Username</Form.Label>
+                        <FloatingLabel
+                        controlId='floatingLabel'
+                        label='Username'
+                        className='mb-2'
+                        >
                         <Form.Control
                             required
                             type='username'
@@ -70,9 +75,14 @@ const SignUp = (props) => {
                             placeholder='Enter username'
                             onChange={e => setUsername(e.target.value)}
                         />
+                        </FloatingLabel>
                     </Form.Group>
                     <Form.Group controlId='password'>
-                        <Form.Label>Password</Form.Label>
+                        <FloatingLabel
+                        controlId='floatingLabel'
+                        label='Password'
+                        className='mb-2'
+                        >
                         <Form.Control
                             required
                             name='password'
@@ -81,9 +91,14 @@ const SignUp = (props) => {
                             placeholder='Password'
                             onChange={e => setPassword(e.target.value)}
                         />
+                        </FloatingLabel>
                     </Form.Group>
                     <Form.Group controlId='passwordConfirmation'>
-                        <Form.Label>Password Confirmation</Form.Label>
+                        <FloatingLabel
+                        controlId='floatingInput'
+                        label='Password Confirmation'
+                        className='mb-2'
+                        >
                         <Form.Control
                             required
                             name='passwordConfirmation'
@@ -92,6 +107,7 @@ const SignUp = (props) => {
                             placeholder='Confirm Password'
                             onChange={e => setPasswordConfirmation(e.target.value)}
                         />
+                        </FloatingLabel>
                     </Form.Group>
                     <Button variant='primary' type='submit'>
                         Submit

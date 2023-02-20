@@ -73,18 +73,16 @@ const FavoriteIndex = (props) => {
         <>
             { fav.game ?
                 <Card key={ fav.game.id } style={{ width: '30%', margin: 5, textAlign: 'center', backgroundColor: '#191921', color: 'white' }}>
-                    <Card.Header>{ fav.game.title }</Card.Header>
-                    <Card.Body>
+                    <Card.Header style={{ fontSize: '20px', }}>{ fav.game.title }</Card.Header>
+                    <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
                         <Card.Text>
                             <Link to={`/games/${fav.game._id}`}>
                             <img src={fav.game.picture} alt="Game Cover" style={{ 
                                 maxWidth: '295px', 
                                 minWidth: '295px', 
                                 minHeight: '170px', 
-                                maxHeight: '170px', 
-                                // border: '2px solid #B0C4DE',
+                                maxHeight: '170px',
                                 borderRadius: '10px',
-                                marginBottom: '15px',
                                 }} 
                             />
                         </Link>
@@ -92,7 +90,7 @@ const FavoriteIndex = (props) => {
                         {fav.owner ?
                         <Card.Footer>
                             <Button 
-                                className="m-2" variant="danger"
+                                className="m-2" variant="outline-danger"
                                 onClick={() => removeFavorite(fav)}
                                 >   
                                 Unfavorite
@@ -108,11 +106,11 @@ const FavoriteIndex = (props) => {
                         <Card.Text>
                             This game was removed
                         </Card.Text>
-                        {fav.owner ?
+                        { fav.owner ?
                         <Card.Footer>
                             owner { fav.owner.username }
                             <Button 
-                                className="m-2" variant="danger"
+                                className="m-2" variant="outline-danger"
                                 onClick={() => removeFavorite(fav)}
                                 >   
                                 Unfavorite

@@ -63,7 +63,7 @@ const GamesIndex = (props) => {
     const gameCards = games.map(game => (
         <>
             <Card key={ game.id } style={{ minWidth: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white'}}>
-                <Card.Header style={{ fontSize: '25px'}}>{ game.title }</Card.Header>
+                <Card.Header style={{ fontSize: '20px'}}>{ game.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
                     <Link to={`/games/${game._id}`}>
@@ -80,8 +80,8 @@ const GamesIndex = (props) => {
                         </Link>
                     </Card.Text>
                     {game.owner ?
-                    <Card.Footer style={{ fontSize: '20px'}}>
-                        OP: { game.owner.username }
+                    <Card.Footer style={{ fontSize: '15px'}}>
+                        Posted by: { game.owner.username }
                     </Card.Footer>
                     : null}
                 </Card.Body>
@@ -92,8 +92,9 @@ const GamesIndex = (props) => {
     const userGameCards = games.map(game => (
         <>
             <Card key={ game.id } style={{ minWidth: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white' }}>
-                <Card.Header style={{ fontSize: '25px' }}>{ game.title }</Card.Header>
+                <Card.Header style={{ fontSize: '20px' }}>{ game.title }</Card.Header>
                 <Card.Body>
+                    {game.owner ?
                     <Card.Text style={{ display: 'flex', flexFlow: 'column' }}>
                         <Link to={`/games/${game._id}`}>
                             <img src={game.picture} alt="Game Cover" style={{ 
@@ -107,18 +108,19 @@ const GamesIndex = (props) => {
                                 }} 
                             />
                         </Link>
+                        Posted by: { game.owner.username }
+                    </Card.Text>
+                    : null}
+                    <Card.Footer style={{ fontSize: '15px'}}>
                         <Button
-                                className="m-2" variant="warning"
+                                className="m-2" variant="outline-warning"
                                 onClick={() => addNewFavorite(game)}
+                                style={{ maxWidth: '150px' }}
                             >
                                 Add to favorites!
-                        </Button> 
-                    </Card.Text>
-                    {game.owner ?
-                    <Card.Footer style={{ fontSize: '20px'}}>
-                        OP: { game.owner.username }
+                        </Button>   
                     </Card.Footer>
-                    : null}
+                    
                 </Card.Body>
             </Card>
         </>

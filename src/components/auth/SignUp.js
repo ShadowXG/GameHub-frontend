@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { signUp, signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
+import { Card } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { FloatingLabel } from 'react-bootstrap'
@@ -58,10 +59,11 @@ const SignUp = (props) => {
 
     return (
         <div className='row'>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Sign Up</h3>
-                <Form onSubmit={onSignUp}>
-                    <Form.Group controlId='username'>
+            <Card className='col-sm-10 col-md-5 mx-auto mt-5' style={{ minWidth: '30%', margin: 5, backgroundColor: '#191921'}}>
+                <Card.Body>
+                    <Card.Title style={{color: '#B0C4DE'}}>Sign Up</Card.Title>
+                    <Form onSubmit={onSignUp}>
+                    <Form.Group className='mt-3' controlId='username'>
                         <FloatingLabel
                         controlId='floatingLabel'
                         label='Username'
@@ -77,7 +79,7 @@ const SignUp = (props) => {
                         />
                         </FloatingLabel>
                     </Form.Group>
-                    <Form.Group controlId='password'>
+                    <Form.Group className='mt-3' controlId='password'>
                         <FloatingLabel
                         controlId='floatingLabel'
                         label='Password'
@@ -93,7 +95,7 @@ const SignUp = (props) => {
                         />
                         </FloatingLabel>
                     </Form.Group>
-                    <Form.Group controlId='passwordConfirmation'>
+                    <Form.Group className='mt-3' controlId='passwordConfirmation'>
                         <FloatingLabel
                         controlId='floatingInput'
                         label='Password Confirmation'
@@ -109,11 +111,12 @@ const SignUp = (props) => {
                         />
                         </FloatingLabel>
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button className='mt-2' variant='primary' type='submit'>
                         Submit
                     </Button>
-                </Form>
-            </div>
+                    </Form>
+                </Card.Body>
+            </Card>
         </div>
     )
 

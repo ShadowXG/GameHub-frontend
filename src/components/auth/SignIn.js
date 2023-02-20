@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Card } from 'react-bootstrap'
 
 import { signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
@@ -57,9 +58,10 @@ const SignIn = (props) => {
 
     return (
         <div className='row'>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Sign In</h3>
-                <Form onSubmit={onSignIn}>
+            <Card className='col-sm-10 col-md-5 mx-auto mt-5' style={{ minWidth: '30%', margin: 5, backgroundColor: '#191921'}}>
+                <Card.Body>
+                    <Card.Title style={{color: '#B0C4DE'}}>Sign In</Card.Title>
+                    <Form onSubmit={onSignIn}>
                     <Form.Group controlId='username'>
                         <FloatingLabel
                         controlId='floatingInput'
@@ -95,8 +97,9 @@ const SignIn = (props) => {
                     <Button variant='primary' type='submit'>
                         Submit
                     </Button>
-                </Form>
-            </div>
+                    </Form>
+                </Card.Body>
+            </Card>
         </div>
     )
 }

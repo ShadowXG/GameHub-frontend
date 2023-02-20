@@ -63,7 +63,7 @@ const GamesIndex = (props) => {
     const gameCards = games.map(game => (
         <>
             <Card key={ game.id } style={{ minWidth: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white'}}>
-                <Card.Header style={{ fontSize: '30px'}}>{ game.title }</Card.Header>
+                <Card.Header style={{ fontSize: '25px'}}>{ game.title }</Card.Header>
                 <Card.Body>
                     <Card.Text>
                     <Link to={`/games/${game._id}`}>
@@ -72,7 +72,7 @@ const GamesIndex = (props) => {
                                 minWidth: '295px', 
                                 minHeight: '170px', 
                                 maxHeight: '170px', 
-                                border: '5px solid #B0C4DE',
+                                // border: '5px solid white',
                                 borderRadius: '10px',
                                 marginBottom: '15px',
                                 }} 
@@ -92,7 +92,7 @@ const GamesIndex = (props) => {
     const userGameCards = games.map(game => (
         <>
             <Card key={ game.id } style={{ minWidth: '30%', margin: 5, backgroundColor: '#191921 ', color: 'white' }}>
-                <Card.Header style={{ fontSize: '30px' }}>{ game.title }</Card.Header>
+                <Card.Header style={{ fontSize: '25px' }}>{ game.title }</Card.Header>
                 <Card.Body>
                     <Card.Text style={{ display: 'flex', flexFlow: 'column' }}>
                         <Link to={`/games/${game._id}`}>
@@ -101,7 +101,7 @@ const GamesIndex = (props) => {
                                 minWidth: '295px', 
                                 minHeight: '170px', 
                                 maxHeight: '170px', 
-                                border: '5px solid #B0C4DE',
+                                // border: '5px solid white',
                                 borderRadius: '10px',
                                 marginBottom: '15px',
                                 }} 

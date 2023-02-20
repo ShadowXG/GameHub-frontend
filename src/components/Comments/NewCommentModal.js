@@ -52,8 +52,8 @@ const NewCommentModal = (props) => {
 
     return (
         <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton />
-            <Modal.Body>
+            <Modal.Header style={{backgroundColor: '#191921'}} closeButton/>
+            <Modal.Body style={{backgroundColor: '#191921'}}>
                 <CommentForm 
                     comment={comment}
                     handleChange={onChange}

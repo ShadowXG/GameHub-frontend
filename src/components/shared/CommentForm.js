@@ -4,7 +4,7 @@ const CommentForm = (props) => {
     const { comment, handleChange, handleSubmit, heading } = props
 
     return (
-        <Container className="justify-content-center">
+        <Container className="justify-content-center" style={{color: '#B0C4DE', backgroundColor: '#191921'}}>
             <h3>{heading}</h3>
             <Form onSubmit={handleSubmit}>
                 {/* <Form.Group className="m-2">

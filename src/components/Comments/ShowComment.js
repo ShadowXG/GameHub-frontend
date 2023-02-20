@@ -29,7 +29,7 @@ const ShowComment = (props) => {
 
     return (
         <>
-            <Card className="m-2">
+            <Card className="m-2" style={{backgroundColor: '#191921'}}>
                 <Card.Header>{comment.author}</Card.Header>
                 <Card.Body>
                     <small>{comment.note}</small><br/>
@@ -41,14 +41,14 @@ const ShowComment = (props) => {
                     <>
                         <Button
                         onClick={() => setEditModalShow(true)}
-                        variant='warning'
+                        variant='outline-light'
                         className='m-2'
                         >
                             Edit Comment
                         </Button>
                         <Button 
                             onClick={() => destroyComment()} 
-                            variant="danger"
+                            variant="outline-danger"
                             className="m-2"
                         >
                             Delete Comment

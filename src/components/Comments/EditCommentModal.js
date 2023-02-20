@@ -52,8 +52,8 @@ const EditCommentModal = (props) => {
 
     return (
         <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton />
-            <Modal.Body>
+            <Modal.Header closeButton style={{backgroundColor: '#191921'}}/>
+            <Modal.Body style={{backgroundColor: '#191921'}}>
                 <CommentForm 
                     comment={comment}
                     handleChange={onChange}

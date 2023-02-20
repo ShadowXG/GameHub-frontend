@@ -11,10 +11,14 @@ import { addFavorite } from '../../api/favorites'
 
 // comment layout
 const commentCardContainerLayout = {
+    backgroundColor: '8, 18, 8',
     display: 'flex',
     justifyContent: 'center',
-    flexFlow: 'row wrap'
+    flexFlow: 'row wrap',
+    display: 'flex-column',
+    maxWidth: '50%'
 }
+
 
 
 const ShowGame = (props) => {
@@ -137,7 +141,7 @@ const ShowGame = (props) => {
                             className="m-2" variant="outline-warning"
                             onClick={() => addNewFavorite()}
                         >
-                            Add as favorite!
+                            Add to Favorites!
                         </Button> 
                         {
                             game.owner && user && game.owner._id === user._id

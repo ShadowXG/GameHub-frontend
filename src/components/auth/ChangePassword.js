@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { changePassword } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
-
+import { Card } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { FloatingLabel } from 'react-bootstrap'
@@ -55,46 +55,48 @@ const ChangePassword = (props) => {
 
     return (
         <div className='row'>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Change Password</h3>
-                <Form onSubmit={onChangePassword}>
-                    <Form.Group controlId='oldPassword'>
-                        <FloatingLabel
-                        controlId='floatingLabel'
-                        label='Old Password'
-                        className='mb-3'
-                        >
-                        <Form.Control
-                            required
-                            name='oldPassword'
-                            value={oldPassword}
-                            type='password'
-                            placeholder='Old Password'
-                            onChange={e => setOldPassword(e.target.value)}
-                        />
-                        </FloatingLabel>
-                    </Form.Group>
-                    <Form.Group controlId='newPassword'>
-                        <FloatingLabel
-                        controlId='floatingLabel'
-                        label='New Password'
-                        className='mb-3'
-                        >
-                        <Form.Control
-                            required
-                            name='newPassword'
-                            value={newPassword}
-                            type='password'
-                            placeholder='New Password'
-                            onChange={e => setNewPassword(e.target.value)}
-                        />
-                        </FloatingLabel>
-                    </Form.Group>
-                    <Button variant='primary' type='submit'>
-                        Submit
-                    </Button>
-                </Form>
-            </div>
+            <Card className='col-sm-10 col-md-5 mx-auto mt-5' style={{ minWidth: '30%', margin: 5, backgroundColor: '#191921'}}>
+                <Card.Body>
+                    <Card.Title style={{color: '#B0C4DE'}}>Change Password</Card.Title>
+                    <Form onSubmit={onChangePassword}>
+                        <Form.Group controlId='oldPassword'>
+                            <FloatingLabel
+                            controlId='floatingLabel'
+                            label='Old Password'
+                            className='mb-3'
+                            >
+                            <Form.Control
+                                required
+                                name='oldPassword'
+                                value={oldPassword}
+                                type='password'
+                                placeholder='Old Password'
+                                onChange={e => setOldPassword(e.target.value)}
+                            />
+                            </FloatingLabel>
+                        </Form.Group>
+                        <Form.Group controlId='newPassword'>
+                            <FloatingLabel
+                            controlId='floatingLabel'
+                            label='New Password'
+                            className='mb-3'
+                            >
+                            <Form.Control
+                                required
+                                name='newPassword'
+                                value={newPassword}
+                                type='password'
+                                placeholder='New Password'
+                                onChange={e => setNewPassword(e.target.value)}
+                            />
+                            </FloatingLabel>
+                        </Form.Group>
+                        <Button variant='primary' type='submit'>
+                            Submit
+                        </Button>
+                    </Form>
+                </Card.Body>
+            </Card>
         </div>
     )
 }

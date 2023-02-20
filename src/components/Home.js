@@ -8,7 +8,7 @@ const Home = (props) => {
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 			<Container className="m-2" style={{ textAlign: 'center' }}>
-				<h2 style={{color: '#B0C4DE'}}>Games</h2>
+				<h2 style={{fontSize: '32px', color: '#B0C4DE'}}>Games</h2>
 				<GamesIndex msgAlert={ props.msgAlert } user={props.user}/>
 			</Container>
 		</div>

@@ -32,10 +32,10 @@ const authenticatedOptions = (
 		</Nav.Item>
 		<Nav.Item className='m-1' style={{}}>
 		<form class="d-flex" role="search" style={{ display: 'flex', marginLeft: '800px'}}>
-        <input class="form-control me-2" type="search" placeholder="Search Games" aria-label="Search"></input>
-        <button class="btn btn-outline-light" type="submit">Search</button>
-      </form>
-	  </Nav.Item>
+        	<input class="form-control me-2" type="search" placeholder="Search Games" aria-label="Search"></input>
+        	<button class="btn btn-outline-light" type="submit">Search</button>
+      	</form>
+	  	</Nav.Item>
 		{/* <Nav.Item className="m-2">
 			<Dropdown>
 				<Dropdown.Toggle variant='success' id='dropdown-basic'>
@@ -58,6 +58,12 @@ const unauthenticatedOptions = (
         <Nav.Item className="m-2">
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
+		<Nav.Item className='m-1' style={{}}>
+		<form class="d-flex" role="search" style={{ display: 'flex', marginLeft: '1200px'}}>
+        	<input class="form-control me-2" type="search" placeholder="Search Games" aria-label="Search"></input>
+        	<button class="btn btn-outline-light" type="submit">Search</button>
+      	</form>
+	  	</Nav.Item>
 	</>
 )
 

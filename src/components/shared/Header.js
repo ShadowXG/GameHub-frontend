@@ -30,6 +30,12 @@ const authenticatedOptions = (
 				Sign Out
 			</Link>
 		</Nav.Item>
+		<Nav.Item className='m-1' style={{}}>
+		<form class="d-flex" role="search" style={{ display: 'flex', marginLeft: '800px'}}>
+        <input class="form-control me-2" type="search" placeholder="Search Games" aria-label="Search"></input>
+        <button class="btn btn-outline-light" type="submit">Search</button>
+      </form>
+	  </Nav.Item>
 		{/* <Nav.Item className="m-2">
 			<Dropdown>
 				<Dropdown.Toggle variant='success' id='dropdown-basic'>
